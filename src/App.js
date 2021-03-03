@@ -4,12 +4,16 @@ import ResumeCard from "./components/resume/resumeCard";
 import "./App.scss";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
+import CategorySidebar from "./components/category/category-sidebar";
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <ResumeCard />
+      <div className="layout__container">
+        <ResumeCard />
+        <CategorySidebar />
+      </div>
       <Footer />
     </div>
   );

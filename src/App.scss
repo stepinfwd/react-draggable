@@ -1,6 +1,13 @@
-.App{
-  font-family: 'Poppins', sans-serif;
+.App {
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f5f1;
 }
-@import 'scss/singleResume';
-@import 'scss/Footer';
-@import 'scss/Header';
+.layout__container {
+  display: flex;
+  flex-direction: row;
+}
+@import "scss/components/singleResume";
+@import "scss/components/Footer";
+@import "scss/components/Header";
+@import "scss/components/resumeCard";
+@import "scss/components/category-sidebar.scss";
