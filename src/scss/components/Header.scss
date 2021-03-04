@@ -26,6 +26,11 @@
     object-fit: contain;
     height: 100px;
     margin-left: 20px;
+    width: 4.5rem;
+    &__logout{
+      width: 2rem;
+      margin-left: 3px;
+    }
   }
   &__right {
     display: flex;
@@ -35,6 +40,7 @@
     // margin-right: 80px;
     p {
       padding-left: 10px;
+      // padding-right: 5px;
     }
   }
 }

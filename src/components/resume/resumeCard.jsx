@@ -6,8 +6,8 @@ function ResumeCard() {
   console.log("resume asd", resumeData.record);
   return (
     <div className="resumecard__global__container">
-      {resumeData.record.map((resume) => (
-        <SingleResume resume={resume} />
+      {resumeData.record.map((resume,index) => (
+        <SingleResume  key={index} resume={resume} />
       ))}
     </div>
   );

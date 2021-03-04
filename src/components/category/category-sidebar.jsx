@@ -16,6 +16,9 @@ function CategorySidebar() {
   const handleAdd = () => {
     const channelName = prompt("add a new category");
   };
+  const categorySelection = (e) => {
+    console.log("category selected",e.target.innerText);
+  };
   return (
     <div className="sidebar">
       <div className="sidebar__inner__container">
@@ -32,8 +35,8 @@ function CategorySidebar() {
           </div>
         </div>
         <div className="sidebar__category__list">
-          {category.map((category) => (
-            <p>{category.name}</p>
+          {category.map((category,index) => (
+            <p onClick={categorySelection}  key={index}>{category.name}</p>
           ))}
         </div>
       </div>
