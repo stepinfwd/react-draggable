@@ -6,8 +6,14 @@
   display: flex;
   flex-direction: row;
 }
-@import "scss/components/singleResume";
+@import "scss/components/single-resume.scss";
 @import "scss/components/Footer";
 @import "scss/components/Header";
-@import "scss/components/resumeCard";
+@import "scss/components/resume-card";
 @import "scss/components/category-sidebar.scss";
+@import "scss/components/category-container.scss";
+@import "scss/utils/utils.scss";
+@import "scss/abstracts/variables.scss";
+
+
+

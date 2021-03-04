@@ -5,6 +5,7 @@ import "./App.scss";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
 import CategorySidebar from "./components/category/category-sidebar";
+import CategoryContainer from "./components/category/category-container";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="layout__container">
         <ResumeCard />
         <CategorySidebar />
+        <CategoryContainer/>
       </div>
       <Footer />
     </div>
