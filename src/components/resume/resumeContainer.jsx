@@ -1,14 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { intialData } from "../data";
 import SingleResume from "./singleResume";
+import { Droppable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
+
 function ResumeContainer() {
   const [resumeData, setresumeData] = useState(intialData);
   console.log("resume asd", resumeData.record);
   return (
     <div className="Resume__container__global">
-      {resumeData.record.map((resume,index) => (
-        <SingleResume  key={index} resume={resume} />
-      ))}
+      <Droppable droppableId="droppable-1" type="PERSON">
+        {(provided, snapshot) => (
+          <div
+            ref={provided.innerRef}
+            style={
+              {
+                // backgroundColor: snapshot.isDraggingOver ? "red" : "grey",
+              }
+            }
+            {...provided.droppableProps}
+          >
+            {provided.placeholder}
+            {resumeData.record.map((resume, index) => (
+              <Draggable draggableId="draggable-1" index={index}>
+                {(provided, snapshot) => (
+                  <div
+                    className="singleResume__container"
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                  >
+                    <SingleResume index={index} key={index} resume={resume} />
+                  </div>
+                )}
+              </Draggable>
+            ))}
+          </div>
+        )}
+      </Droppable>
     </div>
   );
 }

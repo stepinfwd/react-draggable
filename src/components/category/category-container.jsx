@@ -14,7 +14,7 @@ function CategoryContainer() {
   };
   return (
     <div className="category__container mart-20">
-      <CategoryContainerHeader className="category__container__header"/>
+      <CategoryContainerHeader />
       <div className="category__container__inner">
         {/* {messages.map((message) => (
           <Message
