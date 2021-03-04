@@ -1,15 +1,8 @@
-.App {
-  font-family: "Poppins", sans-serif;
-  background-color: #f9f5f1;
-}
-.layout__container {
-  display: flex;
-  flex-direction: row;
-}
+
 @import "scss/components/single-resume.scss";
 @import "scss/components/Footer";
 @import "scss/components/Header";
-@import "scss/components/resume-card";
+@import "scss/components/resume-container";
 @import "scss/components/category-sidebar.scss";
 @import "scss/components/category-container.scss";
 @import "scss/utils/utils.scss";
@@ -17,3 +10,11 @@
 
 
 
+.App {
+  font-family: "Poppins", sans-serif;
+  background-color: $bgColor;
+}
+.layout__container {
+  display: flex;
+  flex-direction: row;
+}

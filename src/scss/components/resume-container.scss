@@ -1,0 +1,20 @@
+.Resume__container__global {
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 90vh;
+  // background-color: chartreuse;
+  overflow-y: scroll;
+  // direction:rtl; 
+
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.Resume__container__global::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.Resume__container__global {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

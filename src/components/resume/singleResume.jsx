@@ -1,8 +1,7 @@
-import React from 'react'
 
 function SingleResume({resume}) {
     console.log("resume is ",resume)
-console.log("asdasd");
+    console.log("asdasd");
     return (
     <>
     <div className="singleResume__container">

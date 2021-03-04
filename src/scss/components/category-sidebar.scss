@@ -4,6 +4,7 @@
   flex: 0.25;
   //   height: 100vh;
   background-color: #ffffff;
+  box-shadow: 0 10px 40px 0 rgba(47, 47, 47, 0.1);
   margin: 20px;
 }
 
@@ -30,8 +31,8 @@
   }
   &__addIcon {
     position: absolute;
-    width: 3.5rem;
-    right: 20px;
+    width: 3.3rem;
+    right: 0px;
     cursor: pointer;
   }
 }
@@ -56,40 +57,3 @@
     display: none;
   }
 }
-// .sidebar__profile {
-//   position: absolute !important;
-//   bottom: 0;
-//   left: 0;
-// }
-// .sidebar__voice {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   color: gray;
-//   background-color: #2f3135;
-//   padding: 10px;
-//   /* border: 1px solid gray; */
-//   position: absolute;
-//   bottom: 5rem;
-// }
-
-// .sidebar__voiceInfo {
-//   flex: 1;
-//   padding: 10px;
-// }
-
-// .sidebar__voiceIcon {
-//   color: #4fb185;
-// }
-
-// .sidebar__voiceInfo > h3 {
-//   color: #4fb185;
-// }
-
-// .sidebar__voiceInfo > p {
-//   font-size: smaller;
-// }
-
-// .sidebar__voiceIcons > .MuiSvgIcon-root {
-//   padding: 10px;
-// }
