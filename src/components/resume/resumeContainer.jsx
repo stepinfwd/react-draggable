@@ -12,7 +12,8 @@ function ResumeContainer() {
       <Droppable droppableId="droppable-1" type="PERSON">
         {(provided, snapshot) => (
           <div
-            ref={provided.innerRef}
+            // ref={provided.innerRef}
+            innerRef={provided.innerRef}
             style={
               {
                 // backgroundColor: snapshot.isDraggingOver ? "red" : "grey",
@@ -22,15 +23,15 @@ function ResumeContainer() {
           >
             {provided.placeholder}
             {resumeData.record.map((resume, index) => (
-              <Draggable draggableId="draggable-1" index={index}>
+              <Draggable draggableId={index} index={index}>
                 {(provided, snapshot) => (
                   <div
                     className="singleResume__container"
-                    ref={provided.innerRef}
+                    innerRef={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    <SingleResume index={index} key={index} resume={resume} />
+                    <SingleResume key={index} resume={resume} />
                   </div>
                 )}
               </Draggable>
