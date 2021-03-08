@@ -11,12 +11,24 @@ import ResumeContainer from "./components/resume/resumeContainer";
 function App() {
   return (
     <div className="App">
+<<<<<<< Updated upstream
       <Header />
       <div className="layout__container">
         <ResumeContainer />
         <CategorySidebar />
         <CategoryContainer/>
       </div>
+=======
+      <Header /> 
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="layout__container">
+          <ResumeContainer />
+          <CategorySidebar />
+          <CategoryContainer />
+        </div>
+      </DragDropContext>
+
+>>>>>>> Stashed changes
       <Footer />
     </div>
   );
