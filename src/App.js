@@ -31,7 +31,6 @@ function App() {
 
     return result;
   };
-
   const onDragEnd = (result) => {
     if (!result.destination) {
       return;
@@ -40,15 +39,28 @@ function App() {
       return;
     }
 
-    const quotes = reorder(
+    const finalData = reorder(
       resume,
       result.source.index,
       result.destination.index
     );
 
-    setResume(quotes);
+    setResume(finalData);
   };
+  // Moves an item from one list to another list.
+  const move = (source, destination, droppableSource, droppableDestination) => {
+    const sourceClone = Array.from(source);
+    const destClone = Array.from(destination);
+    const [removed] = sourceClone.splice(droppableSource.index, 1);
 
+    destClone.splice(droppableDestination.index, 0, removed);
+
+    const result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
+
+    return result;
+  };
   return (
     <div className="App">
       <Header />
