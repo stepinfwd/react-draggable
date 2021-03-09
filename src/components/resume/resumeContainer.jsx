@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { intialData } from "../data";
+import { initialData } from "../data";
 import SingleResume from "./singleResume";
-function ResumeContainer() {
-  const [resumeData, setresumeData] = useState(intialData);
-  console.log("resume asd", resumeData.record);
+function ResumeContainer({resume}) {
+  // const [resumeData, setresumeData] = useState(initialData);
+  console.log("resume asd", resume.record);
   return (
     <div className="Resume__container__global">
-      {resumeData.record.map((resume,index) => (
+      {resume.map((resume,index) => (
         <SingleResume  key={index} resume={resume} />
       ))}
     </div>

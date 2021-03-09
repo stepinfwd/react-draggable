@@ -2,23 +2,24 @@ import React, { useState, useEffect } from "react";
 import listIcon from "../images/list.svg";
 import addIcon from "../images/plus.svg";
 
-function CategorySidebar() {
-  const [category, setcategory] = useState([
-    { id: 1, name: "devops" },
-    { id: 2, name: "backend" },
-    { id: 3, name: "junior frontend" },
-    { id: 4, name: "business developmnent" },
-    { id: 5, name: "Lead Engineer" },
-  ]);
+function CategorySidebar({category,setselectedCategory,handleSelectedCategory}) {
+  // const [category, setcategory] = useState([
+  //   { id: 1, name: "devops" },
+  //   { id: 2, name: "backend" },
+  //   { id: 3, name: "junior frontend" },
+  //   { id: 4, name: "business developmnent" },
+  //   { id: 5, name: "Lead Engineer" },
+  // ]);
 
   useEffect(() => {}, []);
 
   const handleAdd = () => {
     const channelName = prompt("add a new category");
   };
-  const categorySelection = (e) => {
-    console.log("category selected",e.target.innerText);
+   handleSelectedCategory = (item) => {
+    setselectedCategory(item)
   };
+
   return (
     <div className="sidebar">
       <div className="sidebar__inner__container">
@@ -35,8 +36,8 @@ function CategorySidebar() {
           </div>
         </div>
         <div className="sidebar__category__list">
-          {category.map((category,index) => (
-            <p onClick={categorySelection}  key={index}>{category.name}</p>
+          {category.map((item,index) => (
+            <p onClick={()=>handleSelectedCategory(item)}  key={index}>{item.name}</p>
           ))}
         </div>
       </div>
