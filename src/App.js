@@ -11,36 +11,58 @@ import { initialData } from "./components/data";
 function App() {
   const [resume, setResume] = useState(initialData.record);
   const [category, setCategory] = useState([
-    { id: 1, name: "devops",items:[] },
-    { id: 2, name: "backend",items:[] },
-    { id: 3, name: "junior frontend",items:[] },
-    { id: 4, name: "business developmnent",items:[] },
-    { id: 5, name: "Lead Engineer",items:[] },
+    { id: 1, name: "devops", items: [] },
+    { id: 2, name: "backend", items: [] },
+    { id: 3, name: "junior frontend", items: [] },
+    { id: 4, name: "business developmnent", items: [] },
+    { id: 5, name: "Lead Engineer", items: [] },
   ]);
   const [selectedCategory, setselectedCategory] = useState(category[0]);
 
   const handleSelectedCategory = (selected) => {
     setselectedCategory(selected);
   };
-  const onDragEnd = (result, columns, setColumns) => {
 
+  const reorder = (list, startIndex, endIndex) => {
+    const result = [...list];
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    console.log("result", result);
 
+    return result;
+  };
+
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+    if (result.destination.index === result.source.index) {
+      return;
+    }
+
+    const quotes = reorder(
+      resume,
+      result.source.index,
+      result.destination.index
+    );
+
+    setResume(quotes);
   };
 
   return (
     <div className="App">
       <Header />
-      <DragDropContext
-        onDragEnd={(result) => onDragEnd(result, category, setCategory)}
-      >
+      <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
         <div className="layout__container">
           <Droppable droppableId="droppable-1" type="PERSON">
             {(provided, snapshot) => (
               <div
-                ref={provided.innerRef}
                 style={{
-                  backgroundColor: snapshot.isDraggingOver ? "blue" : "grey",
+                  backgroundColor: snapshot.isDraggingOver
+                    ? " #fff9f1"
+                    : "rgba(79, 233, 174, 0.425)",
                 }}
+                ref={provided.innerRef}
                 {...provided.droppableProps}
               >
                 <ResumeContainer resume={resume} />

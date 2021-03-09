@@ -1,34 +1,36 @@
 export const initialData = {
   record: [
     {
-      id: "1",
+      id: "id-1",
       name: "Patricia",
       resume: "https://resume-resource.com/before-after/ba-ex10.pdf",
     },
     {
-      id:"2",
+      id: "id-2",
 
       name: "Lee",
       resume: "https://resume-resource.com/pdf/extec18.pdf",
     },
     {
-      id:"3",
+      id: "id-3",
 
       name: "Ravi",
       resume: "https://resume-resource.com/pdf/exex13.pdf",
     },
     {
-      id:"4",
+      id: "id-4",
 
       name: "Jonathan",
       resume: "https://resume-resource.com/pdf/extec21.pdf",
     },
     {
+      id: "id-5",
+
       name: "Jane",
       resume: "https://resume-resource.com/before-after/ba-ex03.pdf",
     },
     {
-      id:"5",
+      id: "id-6",
 
       name: "Matthew",
       resume: "https://resume-resource.com/before-after/ba-ex06.pdf",
