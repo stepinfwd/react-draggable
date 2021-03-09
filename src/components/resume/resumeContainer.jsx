@@ -3,12 +3,12 @@ import initialData  from "../data";
 import SingleResume from "./singleResume";
 import { Draggable } from "react-beautiful-dnd";
 
-function ResumeContainer() {
-  const [resumeData, setresumeData] = useState(initialData);
+function ResumeContainer({category}) {
+  const [resumeData, setresumeData] = useState(category.items);
   // console.log("resume asd", resumeData.record);
   return (
     <div className="Resume__container__global">
-      {resumeData.record.map((resume, index) => (
+      {resumeData.map((resume, index) => (
         <Draggable
           // adding a key is important!
           key={resume.name}
