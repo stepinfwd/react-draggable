@@ -1,4 +1,4 @@
-export  const  intialData={
+ const initialData={
     
         "record": [
             {
@@ -32,3 +32,4 @@ export  const  intialData={
         }
     
 }
+export default initialData;

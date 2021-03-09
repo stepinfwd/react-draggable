@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import CategoryContainerHeader from "./category-container-header";
-function CategoryContainer() {
+function CategoryContainer({selectedCategory,handleSelectedCategory}) {
 
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
-
+// const [state, setstate] = useState(initialState)
   useEffect(() => {
 
   }, []);
@@ -14,7 +14,7 @@ function CategoryContainer() {
   };
   return (
     <div className="category__container mart-20">
-      <CategoryContainerHeader className="category__container__header"/>
+      <CategoryContainerHeader className="category__container__header" selectedCategory={selectedCategory}/>
       <div className="category__container__inner">
         {/* {messages.map((message) => (
           <Message

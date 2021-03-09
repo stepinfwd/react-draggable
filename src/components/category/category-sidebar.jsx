@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
+import initialData from "../data";
 import listIcon from "../images/list.svg";
 import addIcon from "../images/plus.svg";
+import { v4 as uuidv4 } from "uuid";
 
-function CategorySidebar() {
-  const [category, setcategory] = useState([
-    { id: 1, name: "devops" },
-    { id: 2, name: "backend" },
-    { id: 3, name: "junior frontend" },
-    { id: 4, name: "business developmnent" },
-    { id: 5, name: "Lead Engineer" },
-  ]);
-
+function CategorySidebar({selectedCategory,handleSelectedCategory}) {
+const [category, setcategory] = useState({
+    [uuidv4()]: { id: 1, name: "RESUME", items: initialData.record },
+    [uuidv4()]: { id: 2, name: "devops", items: [] },
+    [uuidv4()]: { id: 3, name: "backend", items: [] },
+    [uuidv4()]: { id: 4, name: "junior frontend", items: [] },
+    [uuidv4()]: { id: 5, name: "business developmnent", items: [] },
+    [uuidv4()]: { id: 6, name: "Lead Engineer", items: [] },
+  });
   useEffect(() => {}, []);
 
   const handleAdd = () => {
     const channelName = prompt("add a new category");
   };
-  const categorySelection = (e) => {
-    console.log("category selected",e.target.innerText);
-  };
+  // const handleSelectedCategory = (e) => {
+  //   console.log("category selected", e.target.innerText);
+  //   setselectedCategory(e.target.innerText)
+  // };
   return (
     <div className="sidebar">
       <div className="sidebar__inner__container">
@@ -35,8 +38,11 @@ function CategorySidebar() {
           </div>
         </div>
         <div className="sidebar__category__list">
-          {category.map((category,index) => (
-            <p onClick={categorySelection}  key={index}>{category.name}</p>
+          {Object.keys(category).map((item, index) => (
+            <p onClick={()=>handleSelectedCategory(category[item].name)} key={index}>
+              {category[item].name}
+              {console.log(item)}
+            </p>
           ))}
         </div>
       </div>
