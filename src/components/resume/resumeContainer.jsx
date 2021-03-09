@@ -1,13 +1,24 @@
 import React, { useState } from "react";
 import { initialData } from "../data";
 import SingleResume from "./singleResume";
+import { Draggable } from "react-beautiful-dnd";
+
 function ResumeContainer({resume}) {
-  // const [resumeData, setresumeData] = useState(initialData);
-  console.log("resume asd", resume.record);
+  // console.log("resume in asdasda",resume)
   return (
     <div className="Resume__container__global">
-      {resume.map((resume,index) => (
-        <SingleResume  key={index} resume={resume} />
+      {resume.map((item,index) => (
+        <Draggable draggableId={item.id} index={0}>
+        {(provided, snapshot) => (
+          <div
+            ref={provided.innerRef}
+            {...provided.draggableProps}
+            {...provided.dragHandleProps}
+          >
+        <SingleResume  key={index} resume={item} />
+          </div>
+        )}
+      </Draggable>
       ))}
     </div>
   );

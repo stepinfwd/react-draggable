@@ -16,7 +16,10 @@ function CategorySidebar({category,setselectedCategory,handleSelectedCategory}) 
   const handleAdd = () => {
     const channelName = prompt("add a new category");
   };
-   handleSelectedCategory = (item) => {
+   handleSelectedCategory = (item) => { <div className="singleResume__container">
+        <p>name: {item.name}</p>
+        <p>{item.resume}</p>
+    </div>
     setselectedCategory(item)
   };
 
