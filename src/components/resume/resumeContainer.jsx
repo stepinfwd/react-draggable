@@ -3,7 +3,7 @@ import { initialData } from "../data";
 import SingleResume from "./singleResume";
 import { Draggable } from "react-beautiful-dnd";
 
-function ResumeContainer({ resume }) {
+function ResumeContainer({ resume ,category,selectedCategory}) {
   // const [resumeData, setresumeData] = useState(initialData);
   return (
     <div className="Resume__container__global">
@@ -16,6 +16,7 @@ function ResumeContainer({ resume }) {
               {...provided.dragHandleProps}
             >
               <SingleResume key={resume.id} index={index} resume={resume} />
+              
             </div>
           )}
         </Draggable>

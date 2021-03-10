@@ -11,8 +11,8 @@ import { initialData } from "./components/data";
 function App() {
   const [resume, setResume] = useState(initialData.record);
   const [category, setCategory] = useState([
-    { id: 1, name: "devops", items: [] },
-    { id: 2, name: "backend", items: [] },
+    { id: 1, name: "devops", items: [1,2,3,4,] },
+    { id: 2, name: "backend", items: [2,4,5,6,7,8,10] },
     { id: 3, name: "junior frontend", items: [] },
     { id: 4, name: "business developmnent", items: [] },
     { id: 5, name: "Lead Engineer", items: [] },
@@ -88,7 +88,7 @@ function App() {
             setselectedCategory={setselectedCategory}
             handleSelectedCategory={handleSelectedCategory}
           />
-          <CategoryContainer selectedCategory={selectedCategory} />
+          <CategoryContainer selectedCategory={selectedCategory} category={category} />
         </div>
       </DragDropContext>
 

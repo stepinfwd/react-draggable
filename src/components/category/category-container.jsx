@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import SingleResume from "../resume/singleResume";
 import CategoryContainerHeader from "./category-container-header";
-import { Draggable } from "react-beautiful-dnd";
-function CategoryContainer({ selectedCategory }) {
+function CategoryContainer({ selectedCategory, category }) {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
 
@@ -11,40 +11,29 @@ function CategoryContainer({ selectedCategory }) {
     console.log(e);
   };
   return (
-    <Droppable droppableId="droppable2">
-      {(provided, snapshot) => (
-        <div
-          ref={provided.innerRef}
-          style={getListStyle(snapshot.isDraggingOver)}
-        >
-          {this.state.selected.map((item, index) => (
-            <Draggable key={item.id} draggableId={item.id} index={index}>
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  style={getItemStyle(
-                    snapshot.isDragging,
-                    provided.draggableProps.style
-                  )}
-                >
-                  {/* {item.content} */}
-                  <div className="category__container mart-20">
-                    <CategoryContainerHeader
-                      selectedCategory={selectedCategory}
-                      className="category__container__header"
-                    />
-                    <div className="category__container__inner"></div>
-                  </div>
-                </div>
-              )}
-            </Draggable>
+    <div className="category__container mart-20">
+      <CategoryContainerHeader
+        selectedCategory={selectedCategory}
+        className="category__container__header"
+      />
+      <div className="category__container__inner">
+        {/* {CategoryContainerHeader.find(x with id of selected category).item.map((item) => (
+          <SingleResume
+          resume={item}
+          />
+        ))} */}
+
+        {console.log(
+          "container map",
+          category.find((item) => item === selectedCategory)
+        )}
+        {category
+          .find((item) => item === selectedCategory)
+          .items.map((innerItem) => (
+            <p>{innerItem}</p>
           ))}
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
+      </div>
+    </div>
   );
 }
 

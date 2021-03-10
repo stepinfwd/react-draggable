@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import listIcon from "../images/list.svg";
 import addIcon from "../images/plus.svg";
 
-function CategorySidebar({category,setselectedCategory,handleSelectedCategory}) {
+function CategorySidebar({
+  category,
+  setselectedCategory,
+  handleSelectedCategory,
+}) {
   // const [category, setcategory] = useState([
   //   { id: 1, name: "devops" },
   //   { id: 2, name: "backend" },
@@ -16,11 +20,8 @@ function CategorySidebar({category,setselectedCategory,handleSelectedCategory}) 
   const handleAdd = () => {
     const channelName = prompt("add a new category");
   };
-   handleSelectedCategory = (item) => { <div className="singleResume__container">
-        <p>name: {item.name}</p>
-        <p>{item.resume}</p>
-    </div>
-    setselectedCategory(item)
+  handleSelectedCategory = (item) => {
+    setselectedCategory(item);
   };
 
   return (
@@ -39,8 +40,10 @@ function CategorySidebar({category,setselectedCategory,handleSelectedCategory}) 
           </div>
         </div>
         <div className="sidebar__category__list">
-          {category.map((item,index) => (
-            <p onClick={()=>handleSelectedCategory(item)}  key={index}>{item.name}</p>
+          {category.map((item, index) => (
+            <p onClick={() => handleSelectedCategory(item)} key={index}>
+              {item.name}
+            </p>
           ))}
         </div>
       </div>
