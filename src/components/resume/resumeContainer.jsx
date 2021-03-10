@@ -8,7 +8,7 @@ function ResumeContainer({ resume ,category,selectedCategory}) {
   return (
     <div className="Resume__container__global">
       {resume.map((resume, index) => (
-        <Draggable draggableId={`id-${index}`} index={index} type="TASK">
+        <Draggable draggableId={`id-${index}`} index={index} key={index} type="TASK">
           {(provided, snapshot) => (
             <div
               ref={provided.innerRef}

@@ -12,26 +12,22 @@ function CategoryContainer({ selectedCategory, category }) {
   };
   return (
     <div className="category__container mart-20">
+      {console.log("Selsecasd",selectedCategory)}
       <CategoryContainerHeader
         selectedCategory={selectedCategory}
         className="category__container__header"
       />
       <div className="category__container__inner">
-        {/* {CategoryContainerHeader.find(x with id of selected category).item.map((item) => (
-          <SingleResume
-          resume={item}
-          />
-        ))} */}
-
-        {console.log(
-          "container map",
-          category.find((item) => item === selectedCategory)
-        )}
-        {category
-          .find((item) => item === selectedCategory)
-          .items.map((innerItem) => (
-            <p>{innerItem}</p>
-          ))}
+        {
+          
+          category
+            .find((item) => item === selectedCategory)
+            .items.map((innerItem, index) => (
+              <>
+                {console.log("inneriteam is", innerItem)}
+                <SingleResume resume={innerItem} key={index} />
+              </>
+            ))}
       </div>
     </div>
   );

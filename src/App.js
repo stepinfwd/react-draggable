@@ -11,13 +11,36 @@ import { initialData } from "./components/data";
 function App() {
   const [resume, setResume] = useState(initialData.record);
   const [category, setCategory] = useState([
-    { id: 1, name: "devops", items: [1,2,3,4,] },
-    { id: 2, name: "backend", items: [2,4,5,6,7,8,10] },
+    { id: 1, name: "devops", items: [  {
+      id: "id-1",
+      name: "Patricia",
+      resume: "https://resume-resource.com/before-after/ba-ex10.pdf",
+    },
+    {
+      id: "id-2",
+
+      name: "Lee",
+      resume: "https://resume-resource.com/pdf/extec18.pdf",
+    },] },
+    { id: 2, name: "backend", items: [] },
     { id: 3, name: "junior frontend", items: [] },
     { id: 4, name: "business developmnent", items: [] },
     { id: 5, name: "Lead Engineer", items: [] },
   ]);
+  /**
+   * A semi-generic way to handle multiple lists. Matches
+   * the IDs of the droppable container to the names of the
+   * source arrays stored in the state.
+   */
   const [selectedCategory, setselectedCategory] = useState(category[0]);
+
+  const id2List = {
+    droppable1: resume,
+    droppable2: selectedCategory.items?selectedCategory.items:"",
+  };
+
+  const getList = (id) => id2List[id];
+  const [taggedResume, setTaggedResume] = useState(category[0].items);
 
   const handleSelectedCategory = (selected) => {
     setselectedCategory(selected);
@@ -31,24 +54,55 @@ function App() {
 
     return result;
   };
+
   const onDragEnd = (result) => {
+    const { source, destination } = result;
+    console.log("result is", result);
     if (!result.destination) {
       return;
     }
     if (result.destination.index === result.source.index) {
       return;
     }
+    if (source.droppableId === destination.droppableId) {
+      const finalData = reorder(
+        resume,
+        result.source.index,
+        result.destination.index
+      );
 
-    const finalData = reorder(
-      resume,
-      result.source.index,
-      result.destination.index
-    );
+      setResume(finalData);
+    } else {
+      const result = moveResume(
+        getList(source.droppableId),
+        getList(destination.droppableId),
+        source,
+        destination
+      );
 
-    setResume(finalData);
+      setResume(...resume,result.droppable1);
+      setselectedCategory(result.droppable2);
+      const copy=[...result.droppable2]
+      setselectedCategory(selectedCategory.items[copy])
+      console.log("move result", result);
+    }
+    if (destination.droppableId === "droppable2") {
+      setTaggedResume(selectedCategory);
+      console.log("tagged", taggedResume);
+    }
   };
+
   // Moves an item from one list to another list.
-  const move = (source, destination, droppableSource, droppableDestination) => {
+  const moveResume = (
+    source,
+    destination,
+    droppableSource,
+    droppableDestination
+  ) => {
+    console.log("source", source);
+    console.log("destination", destination);
+    console.log("sourdroppableSourcece", droppableSource);
+    console.log("droppableDestination", droppableDestination);
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -66,13 +120,13 @@ function App() {
       <Header />
       <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
         <div className="layout__container">
-          <Droppable droppableId="droppable-1" type="PERSON">
+          <Droppable droppableId="droppable1" type="RESUME">
             {(provided, snapshot) => (
               <div
                 style={{
                   backgroundColor: snapshot.isDraggingOver
-                    ? " #fff9f1"
-                    : "rgba(79, 233, 174, 0.425)",
+                    ? " #8a9a5b"
+                    : "#00a572",
                 }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
@@ -88,7 +142,24 @@ function App() {
             setselectedCategory={setselectedCategory}
             handleSelectedCategory={handleSelectedCategory}
           />
-          <CategoryContainer selectedCategory={selectedCategory} category={category} />
+          <Droppable droppableId="droppable2" type="RESUME">
+            {(provided, snapshot) => (
+              <div
+                style={{
+                  backgroundColor: snapshot.isDraggingOver ? "#ffffff" : "",
+                  flex: "0.7 ",
+                }}
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+              >
+                <CategoryContainer
+                  selectedCategory={selectedCategory}
+                  category={category}
+                />
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
         </div>
       </DragDropContext>
 
