@@ -66,11 +66,14 @@ function App() {
     const { source, destination } = result;
     console.log("result is", result);
     if (!result.destination) {
+      console.log("called 1")
       return;
     }
-    if (result.destination.index === result.source.index) {
-      return;
-    }
+    // if (result.destination.index === result.source.index) {
+    //   console.log("called 1qw")
+
+    //   return;
+    // }
     if (source.droppableId === destination.droppableId) {
       const finalData = reorder(
         resume,
@@ -131,7 +134,7 @@ function App() {
     return result;
   };
   useEffect(() => {
-  }, [onDragEnd, moveResume,resume, category,currentRemoved]);
+  }, [onDragEnd, moveResume]);
   return (
     <div className="App">
       <Header />
