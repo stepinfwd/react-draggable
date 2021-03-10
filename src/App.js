@@ -10,18 +10,25 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import { initialData } from "./components/data";
 function App() {
   const [resume, setResume] = useState(initialData.record);
+  const [currentRemoved, setcurrentRemoved] = useState("");
   const [category, setCategory] = useState([
-    { id: 1, name: "devops", items: [  {
-      id: "id-1",
-      name: "Patricia",
-      resume: "https://resume-resource.com/before-after/ba-ex10.pdf",
-    },
     {
-      id: "id-2",
+      id: 1,
+      name: "devops",
+      items: [
+        {
+          id: "id-1",
+          name: "Patricia",
+          resume: "https://resume-resource.com/before-after/ba-ex10.pdf",
+        },
+        {
+          id: "id-2",
 
-      name: "Lee",
-      resume: "https://resume-resource.com/pdf/extec18.pdf",
-    },] },
+          name: "Lee",
+          resume: "https://resume-resource.com/pdf/extec18.pdf",
+        },
+      ],
+    },
     { id: 2, name: "backend", items: [] },
     { id: 3, name: "junior frontend", items: [] },
     { id: 4, name: "business developmnent", items: [] },
@@ -36,7 +43,7 @@ function App() {
 
   const id2List = {
     droppable1: resume,
-    droppable2: selectedCategory.items?selectedCategory.items:"",
+    droppable2: selectedCategory.items ? selectedCategory.items : "",
   };
 
   const getList = (id) => id2List[id];
@@ -79,16 +86,23 @@ function App() {
         source,
         destination
       );
+      console.log("Called", result.droppable1);
+      setResume(result.droppable1);
+      // setCategory( ...result.droppable2 );
 
-      setResume(...resume,result.droppable1);
-      setselectedCategory(result.droppable2);
-      const copy=[...result.droppable2]
-      setselectedCategory(selectedCategory.items[copy])
+      // setselectedCategory(result.droppable2);
+      // const copy = [...result.droppable2];
+      // // setselectedCategory(selectedCategory.items[copy])
+      {
+        category.find((item) => item === selectedCategory).items.push(currentRemoved);
+      }
       console.log("move result", result);
+      console.log("move resume", resume);
+      console.log("move category", category);
     }
     if (destination.droppableId === "droppable2") {
-      setTaggedResume(selectedCategory);
-      console.log("tagged", taggedResume);
+      // setTaggedResume(...taggedResume, selectedCategory);
+      // console.log("tagged", taggedResume);
     }
   };
 
@@ -106,7 +120,8 @@ function App() {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
-
+    console.log("remov", removed);
+    setcurrentRemoved(removed)
     destClone.splice(droppableDestination.index, 0, removed);
 
     const result = {};
@@ -115,6 +130,8 @@ function App() {
 
     return result;
   };
+  useEffect(() => {
+  }, [onDragEnd, moveResume,resume, category,currentRemoved]);
   return (
     <div className="App">
       <Header />
