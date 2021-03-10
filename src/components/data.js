@@ -35,6 +35,24 @@ export const initialData = {
       name: "Matthew",
       resume: "https://resume-resource.com/before-after/ba-ex06.pdf",
     },
+    {
+      id: "id-7",
+
+      name: "Jonathan",
+      resume: "https://resume-resource.com/pdf/extec21.pdf",
+    },
+    {
+      id: "id-8",
+
+      name: "Jane",
+      resume: "https://resume-resource.com/before-after/ba-ex03.pdf",
+    },
+    {
+      id: "id-9",
+
+      name: "Matthew",
+      resume: "https://resume-resource.com/before-after/ba-ex06.pdf",
+    },
   ],
   metadata: {
     id: "603e095481087a6a8b944bd4",

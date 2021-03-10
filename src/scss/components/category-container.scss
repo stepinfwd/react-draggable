@@ -1,8 +1,8 @@
 .category__container {
   flex: 0.7 !important;
   // width:  40vw;
-  // height: 100vh;
-  height: 93.3%;
+  height: 100vh;
+  // height: 93.3%;
   // background-color: rgb(255, 255, 255);
   box-shadow: 0 10px 40px 0 rgba(47, 47, 47, 0.1);
   padding-left: 20px;
@@ -10,6 +10,7 @@
   border-left: 2px solid #ebebeb;
   margin-bottom: 20px;
   flex-direction: column;
+  overflow-y: scroll;
 
   &__header {
     border-bottom: 1px solid #ebebeb;
