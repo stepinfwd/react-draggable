@@ -1,5 +1,5 @@
 import { DragDropContext } from "react-beautiful-dnd";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.scss";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
@@ -10,7 +10,6 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import { initialData } from "./components/data";
 function App() {
   const [resume, setResume] = useState(initialData.record);
-  const [currentRemoved, setcurrentRemoved] = useState("");
   const [category, setCategory] = useState([
     { id: 1, name: "devops", items: [] },
     { id: 2, name: "backend", items: [] },
@@ -55,7 +54,6 @@ function App() {
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
-    setcurrentRemoved(removed);
     destClone.splice(droppableDestination.index, 0, removed);
     const result = {};
     result[droppableSource.droppableId] = sourceClone;
@@ -65,18 +63,36 @@ function App() {
 
   // drag function for items using react beautiful dnd
   const onDragEnd = (result) => {
+    console.log("Result", result)
     const { source, destination } = result;
     if (!result.destination) {
       return;
     }
 
     if (source.droppableId === destination.droppableId) {
+      if(source.droppableId == "droppable1"){
       const finalData = reorder(
         resume,
         result.source.index,
         result.destination.index
       );
       setResume(finalData);
+      }
+      else{
+        const finalData = reorder(
+          selectedCategory.items,
+          result.source.index,
+          result.destination.index
+        );
+        const newCategory = [];
+        // code to update newly dragged item to resume-droppable-container
+        category.forEach((item) => {
+          if (item === selectedCategory) item.items = finalData
+          newCategory.push(item);
+        });
+        setCategory(newCategory);
+
+      }
     } else {
       const result = moveResume(
         getList(source.droppableId),
