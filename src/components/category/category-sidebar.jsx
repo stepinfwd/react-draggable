@@ -6,21 +6,17 @@ function CategorySidebar({
   category,
   setselectedCategory,
   handleSelectedCategory,
-  handleAddCategory
+  handleAddCategory,
 }) {
   const [channelName, setchannelName] = useState();
 
-  useEffect(() => {
-    if(channelName)
-    handleAddCategory(channelName)
-  }, [channelName])
-
-  const  categoryCallback = () => {
-    const data=(prompt("add a new category"));
-    console.log("data",data)
-    setchannelName(data)
+  const handleNewCategory = () => {
+    const data = prompt("add a new category");
+    console.log("data", data);
+    setchannelName(data);
+    handleAddCategory(data);
   };
-    // console.log("channel", channelName);
+  // console.log("channel", channelName);
 
   handleSelectedCategory = (item) => {
     setselectedCategory(item);
@@ -37,7 +33,7 @@ function CategorySidebar({
               className="sidebar__header__addIcon"
               alt=""
               src={addIcon}
-              onClick={categoryCallback}
+              onClick={handleNewCategory}
             ></img>
           </div>
         </div>

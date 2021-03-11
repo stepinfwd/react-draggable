@@ -1,3 +1,5 @@
+@import "../abstracts/variables.scss";
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -24,6 +26,9 @@
   align-items: center;
   //   justify-content: space-around;
   padding-left: 10px;
+  h4 {
+    color: $fontGrey !important;
+  }
 
   &__icon {
     width: 1.3rem;

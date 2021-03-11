@@ -18,28 +18,29 @@ function App() {
     { id: 5, name: "Lead Engineer", items: [] },
   ]);
   const [newCategory, setNewCategory] = useState();
+  const [selectedCategory, setselectedCategory] = useState(category[0]);
 
   /**
    * A semi-generic way to handle multiple lists. Matches
    * the IDs of the droppable container to the names of the
    * source arrays stored in the state.
    */
-  const [selectedCategory, setselectedCategory] = useState(category[0]);
 
   const id2List = {
     droppable1: resume,
     droppable2: selectedCategory.items ? selectedCategory.items : "",
   };
 
+  // FUNCTION TO GET CORRESPONDING LIST
   const getList = (id) => id2List[id];
 
   // function to handle addition of category
   const handleCategoryAddition = (target) => {
     // setNewCategory(target);
-    setCategory(...category,{id:"6",name:target,items:[]});
-    console.log("newcategory",target)
-    console.log("category",category)
-
+    const _new = { id: "6", name: target, items: [] };
+    setCategory([...category, _new]);
+    console.log("newcategory", target);
+    console.log("category", category);
   };
 
   // to get currently selected category
@@ -125,13 +126,19 @@ function App() {
       <Header />
       <DragDropContext onDragEnd={(result) => onDragEnd(result)}>
         <div className="layout__container">
-          <Droppable droppableId="droppable1" type="RESUME">
+          <Droppable
+            droppableId="droppable1"
+            type="RESUME"
+            className="droppable"
+          >
             {(provided, snapshot) => (
               <div
+                className="droppable__resume__container"
                 style={{
                   backgroundColor: snapshot.isDraggingOver
                     ? " #4fb185"
                     : "#4fb185",
+                  flex: "0.3 ",
                 }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
@@ -149,7 +156,11 @@ function App() {
             handleAddCategory={handleCategoryAddition}
           />
 
-          <Droppable droppableId="droppable2" type="RESUME">
+          <Droppable
+            droppableId="droppable2"
+            type="RESUME"
+            className="droppable"
+          >
             {(provided, snapshot) => (
               <div
                 style={{
