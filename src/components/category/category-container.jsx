@@ -10,7 +10,6 @@ function CategoryContainer({ selectedCategory, category }) {
         className="category__container__header"
       />
       <div className="category__container__inner">
-        {/* {console.log("cate"category)} */}
         {category
           .find((item) => item === selectedCategory)
           .items.map((innerItem, index) =>
@@ -26,6 +25,7 @@ function CategoryContainer({ selectedCategory, category }) {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
+                    className="inner"
                   >
                     <SingleResume resume={innerItem} key={index} />
                   </div>

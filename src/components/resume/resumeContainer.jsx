@@ -19,6 +19,7 @@ function ResumeContainer({ resume }) {
                   ref={provided.innerRef}
                   {...provided.draggableProps}
                   {...provided.dragHandleProps}
+                  className="inner"
                 >
                   <SingleResume key={item.id} index={index} resume={item} />
                 </div>

@@ -17,6 +17,8 @@ function App() {
     { id: 4, name: "business developmnent", items: [] },
     { id: 5, name: "Lead Engineer", items: [] },
   ]);
+  const [newCategory, setNewCategory] = useState();
+
   /**
    * A semi-generic way to handle multiple lists. Matches
    * the IDs of the droppable container to the names of the
@@ -30,6 +32,15 @@ function App() {
   };
 
   const getList = (id) => id2List[id];
+
+  // function to handle addition of category
+  const handleCategoryAddition = (target) => {
+    // setNewCategory(target);
+    setCategory(...category,{id:"6",name:target,items:[]});
+    console.log("newcategory",target)
+    console.log("category",category)
+
+  };
 
   // to get currently selected category
   const handleSelectedCategory = (selected) => {
@@ -63,22 +74,21 @@ function App() {
 
   // drag function for items using react beautiful dnd
   const onDragEnd = (result) => {
-    console.log("Result", result)
+    console.log("Result", result);
     const { source, destination } = result;
     if (!result.destination) {
       return;
     }
 
     if (source.droppableId === destination.droppableId) {
-      if(source.droppableId == "droppable1"){
-      const finalData = reorder(
-        resume,
-        result.source.index,
-        result.destination.index
-      );
-      setResume(finalData);
-      }
-      else{
+      if (source.droppableId == "droppable1") {
+        const finalData = reorder(
+          resume,
+          result.source.index,
+          result.destination.index
+        );
+        setResume(finalData);
+      } else {
         const finalData = reorder(
           selectedCategory.items,
           result.source.index,
@@ -87,11 +97,10 @@ function App() {
         const newCategory = [];
         // code to update newly dragged item to resume-droppable-container
         category.forEach((item) => {
-          if (item === selectedCategory) item.items = finalData
+          if (item === selectedCategory) item.items = finalData;
           newCategory.push(item);
         });
         setCategory(newCategory);
-
       }
     } else {
       const result = moveResume(
@@ -121,8 +130,8 @@ function App() {
               <div
                 style={{
                   backgroundColor: snapshot.isDraggingOver
-                    ? " #8a9a5b"
-                    : "#00a572",
+                    ? " #4fb185"
+                    : "#4fb185",
                 }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
@@ -137,7 +146,9 @@ function App() {
             category={category}
             setselectedCategory={setselectedCategory}
             handleSelectedCategory={handleSelectedCategory}
+            handleAddCategory={handleCategoryAddition}
           />
+
           <Droppable droppableId="droppable2" type="RESUME">
             {(provided, snapshot) => (
               <div

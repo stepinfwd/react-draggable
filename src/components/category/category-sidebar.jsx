@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import listIcon from "../images/list.svg";
 import addIcon from "../images/plus.svg";
 
@@ -6,10 +6,22 @@ function CategorySidebar({
   category,
   setselectedCategory,
   handleSelectedCategory,
+  handleAddCategory
 }) {
-  const handleAdd = () => {
-    const channelName = prompt("add a new category");
+  const [channelName, setchannelName] = useState();
+
+  useEffect(() => {
+    if(channelName)
+    handleAddCategory(channelName)
+  }, [channelName])
+
+  const  categoryCallback = () => {
+    const data=(prompt("add a new category"));
+    console.log("data",data)
+    setchannelName(data)
   };
+    // console.log("channel", channelName);
+
   handleSelectedCategory = (item) => {
     setselectedCategory(item);
   };
@@ -25,7 +37,7 @@ function CategorySidebar({
               className="sidebar__header__addIcon"
               alt=""
               src={addIcon}
-              onClick={handleAdd}
+              onClick={categoryCallback}
             ></img>
           </div>
         </div>
