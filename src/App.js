@@ -12,23 +12,7 @@ function App() {
   const [resume, setResume] = useState(initialData.record);
   const [currentRemoved, setcurrentRemoved] = useState("");
   const [category, setCategory] = useState([
-    {
-      id: 1,
-      name: "devops",
-      items: [
-        {
-          id: "id-1",
-          name: "Patricia",
-          resume: "https://resume-resource.com/before-after/ba-ex10.pdf",
-        },
-        {
-          id: "id-2",
-
-          name: "Lee",
-          resume: "https://resume-resource.com/pdf/extec18.pdf",
-        },
-      ],
-    },
+    { id: 1, name: "devops", items: [] },
     { id: 2, name: "backend", items: [] },
     { id: 3, name: "junior frontend", items: [] },
     { id: 4, name: "business developmnent", items: [] },
@@ -47,40 +31,51 @@ function App() {
   };
 
   const getList = (id) => id2List[id];
-  const [taggedResume, setTaggedResume] = useState(category[0].items);
 
+  // to get currently selected category
   const handleSelectedCategory = (selected) => {
     setselectedCategory(selected);
   };
 
+  // to reorder items within a droppable
   const reorder = (list, startIndex, endIndex) => {
     const result = [...list];
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
     console.log("result", result);
-
+    return result;
+  };
+  // to move item from one droppable to another
+  const moveResume = (
+    source,
+    destination,
+    droppableSource,
+    droppableDestination
+  ) => {
+    const sourceClone = Array.from(source);
+    const destClone = Array.from(destination);
+    const [removed] = sourceClone.splice(droppableSource.index, 1);
+    setcurrentRemoved(removed);
+    destClone.splice(droppableDestination.index, 0, removed);
+    const result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
     return result;
   };
 
+  // drag function for items using react beautiful dnd
   const onDragEnd = (result) => {
     const { source, destination } = result;
-    console.log("result is", result);
     if (!result.destination) {
-      console.log("called 1")
       return;
     }
-    // if (result.destination.index === result.source.index) {
-    //   console.log("called 1qw")
 
-    //   return;
-    // }
     if (source.droppableId === destination.droppableId) {
       const finalData = reorder(
         resume,
         result.source.index,
         result.destination.index
       );
-
       setResume(finalData);
     } else {
       const result = moveResume(
@@ -89,52 +84,17 @@ function App() {
         source,
         destination
       );
-      console.log("Called", result.droppable1);
       setResume(result.droppable1);
-      // setCategory( ...result.droppable2 );
-
-      // setselectedCategory(result.droppable2);
-      // const copy = [...result.droppable2];
-      // // setselectedCategory(selectedCategory.items[copy])
-      {
-        category.find((item) => item === selectedCategory).items.push(currentRemoved);
-      }
-      console.log("move result", result);
-      console.log("move resume", resume);
-      console.log("move category", category);
-    }
-    if (destination.droppableId === "droppable2") {
-      // setTaggedResume(...taggedResume, selectedCategory);
-      // console.log("tagged", taggedResume);
+      const newCategory = [];
+      // code to update newly dragged item to resume-droppable-container
+      category.forEach((item) => {
+        if (item === selectedCategory) item.items = result.droppable2;
+        newCategory.push(item);
+      });
+      setCategory(newCategory);
     }
   };
 
-  // Moves an item from one list to another list.
-  const moveResume = (
-    source,
-    destination,
-    droppableSource,
-    droppableDestination
-  ) => {
-    console.log("source", source);
-    console.log("destination", destination);
-    console.log("sourdroppableSourcece", droppableSource);
-    console.log("droppableDestination", droppableDestination);
-    const sourceClone = Array.from(source);
-    const destClone = Array.from(destination);
-    const [removed] = sourceClone.splice(droppableSource.index, 1);
-    console.log("remov", removed);
-    setcurrentRemoved(removed)
-    destClone.splice(droppableDestination.index, 0, removed);
-
-    const result = {};
-    result[droppableSource.droppableId] = sourceClone;
-    result[droppableDestination.droppableId] = destClone;
-
-    return result;
-  };
-  useEffect(() => {
-  }, [onDragEnd, moveResume]);
   return (
     <div className="App">
       <Header />

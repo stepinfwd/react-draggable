@@ -28,7 +28,7 @@
     height: 100px;
     margin-left: 20px;
     width: 4.5rem;
-    &__logout{
+    &__logout {
       width: 2rem;
       margin-left: 3px;
     }
@@ -61,5 +61,10 @@
   background-position: -10px;
 
   background-repeat: no-repeat;
-  background-image: url('https://media.istockphoto.com/photos/portrait-of-smiling-handsome-man-in-blue-tshirt-standing-with-crossed-picture-id1045886560?k=6&m=1045886560&s=612x612&w=0&h=hXrxai1QKrfdqWdORI4TZ-M0ceCVakt4o6532vHaS3I=');
+  background-image: url("https://media.istockphoto.com/photos/portrait-of-smiling-handsome-man-in-blue-tshirt-standing-with-crossed-picture-id1045886560?k=6&m=1045886560&s=612x612&w=0&h=hXrxai1QKrfdqWdORI4TZ-M0ceCVakt4o6532vHaS3I=");
+}
+@media only screen and (max-width: 1200px) {
+  .header__right {
+    width: 30vw;
+  }
 }

@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import { initialData } from "../data";
+import React from "react";
 import SingleResume from "./singleResume";
 import { Draggable } from "react-beautiful-dnd";
 
-function ResumeContainer({ resume, category, selectedCategory }) {
-  // const [resumeData, setresumeData] = useState(initialData);
+function ResumeContainer({ resume }) {
   return (
     <div className="Resume__container__global">
       {resume.map((item, index) => (

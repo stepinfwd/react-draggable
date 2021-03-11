@@ -12,7 +12,7 @@ function Header() {
       </a>
 
       <div className="header__center">
-        <input type="text" placeholder="search"/>
+        <input type="text" placeholder="search" />
         <img alt="" src={magnifier} />
       </div>
 

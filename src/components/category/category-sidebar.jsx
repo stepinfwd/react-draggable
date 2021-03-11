@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import listIcon from "../images/list.svg";
 import addIcon from "../images/plus.svg";
 
@@ -7,16 +7,6 @@ function CategorySidebar({
   setselectedCategory,
   handleSelectedCategory,
 }) {
-  // const [category, setcategory] = useState([
-  //   { id: 1, name: "devops" },
-  //   { id: 2, name: "backend" },
-  //   { id: 3, name: "junior frontend" },
-  //   { id: 4, name: "business developmnent" },
-  //   { id: 5, name: "Lead Engineer" },
-  // ]);
-
-  useEffect(() => {}, []);
-
   const handleAdd = () => {
     const channelName = prompt("add a new category");
   };
@@ -40,6 +30,7 @@ function CategorySidebar({
           </div>
         </div>
         <div className="sidebar__category__list">
+          {console.log("category inside sidebar", category)}
           {category.map((item, index) => (
             <p onClick={() => handleSelectedCategory(item)} key={index}>
               {item.name}

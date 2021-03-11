@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 function CategoryContainerHeader({selectedCategory}) {
   return (
     <div className="category__container__header">

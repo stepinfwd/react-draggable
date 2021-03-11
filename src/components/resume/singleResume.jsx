@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Draggable } from "react-beautiful-dnd";
-function SingleResume({ resume, index }) {
+import React from "react";
+function SingleResume({ resume }) {
   return (
     <>
       <div className="singleResume__container">
