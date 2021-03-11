@@ -1,7 +1,7 @@
 import React from "react";
-import SingleCat from "../resume/singleCat";
 import CategoryContainerHeader from "./category-container-header";
 import { Draggable } from "react-beautiful-dnd";
+import SingleResume from "../resume/singleResume";
 function CategoryContainer({ selectedCategory, category }) {
   return (
     <div className="category__container mart-20">
@@ -27,7 +27,7 @@ function CategoryContainer({ selectedCategory, category }) {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                   >
-                    <SingleCat resume={innerItem} key={index} />
+                    <SingleResume resume={innerItem} key={index} />
                   </div>
                 )}
               </Draggable>
