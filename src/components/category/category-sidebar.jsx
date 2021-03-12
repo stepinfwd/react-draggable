@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
-import listIcon from "../images/list.svg";
-import addIcon from "../images/plus.svg";
+import listIcon from "../images/list.js";
+import addIcon from "../images/plus.js";
+import DeleteImg from "../images/delete.js";
+
 
 function CategorySidebar({
   category,
@@ -40,9 +42,12 @@ function CategorySidebar({
         <div className="sidebar__category__list">
           {console.log("category inside sidebar", category)}
           {category.map((item, index) => (
-            <p onClick={() => handleSelectedCategory(item)} key={index}>
-              {item.name}
-            </p>
+            <>
+            <div className="sidebar__category__card" onClick={() => handleSelectedCategory(item)} key={index}>
+             <p>{item.name}</p> 
+             <img src={DeleteImg}></img>
+            </div>
+            </>
           ))}
         </div>
       </div>
