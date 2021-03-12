@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import listIcon from "../images/list.svg";
 import addIcon from "../images/plus.svg";
+import deleteIcon from "../images/trash.svg";
+
 
 function CategorySidebar({
   category,
@@ -15,6 +17,11 @@ function CategorySidebar({
     console.log("data", data);
     setchannelName(data);
     handleAddCategory(data);
+  };
+  const handleDeleteCategory = () => {
+    const data = alert("are you sure ? this cant be undone ");
+    console.log("data", data);
+
   };
   // console.log("channel", channelName);
 
@@ -41,7 +48,7 @@ function CategorySidebar({
           {console.log("category inside sidebar", category)}
           {category.map((item, index) => (
             <p onClick={() => handleSelectedCategory(item)} key={index}>
-              {item.name}
+              {item.name}<span><img onClick={handleDeleteCategory} src={deleteIcon}></img></span>
             </p>
           ))}
         </div>

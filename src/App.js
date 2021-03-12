@@ -138,7 +138,7 @@ function App() {
                   backgroundColor: snapshot.isDraggingOver
                     ? " #4fb185"
                     : "#4fb185",
-                  flex: "0.3 ",
+                  flex: "0.2 ",
                 }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
@@ -154,6 +154,9 @@ function App() {
             setselectedCategory={setselectedCategory}
             handleSelectedCategory={handleSelectedCategory}
             handleAddCategory={handleCategoryAddition}
+            style={{
+              flex: "0.3 ",
+            }}
           />
 
           <Droppable
@@ -165,7 +168,7 @@ function App() {
               <div
                 style={{
                   backgroundColor: snapshot.isDraggingOver ? "#ffffff" : "",
-                  flex: "0.7 ",
+                  flex: "0.5 ",
                 }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}

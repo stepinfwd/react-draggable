@@ -24,6 +24,13 @@
 .sidebar__category {
   flex: 1 !important;
   position: relative;
+  &__list p{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__list p>span>img{
+    width: 1rem;
+  }
 }
 .sidebar__addChannel {
   cursor: pointer;
