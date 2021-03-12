@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../../components/images/logo.png";
 import logout from "../../components/images/logout.png";
 
-import magnifier from "../../components/images/mag.svg";
+import magnifier from "../../components/images/mag.js";
 
 function Header() {
   return (

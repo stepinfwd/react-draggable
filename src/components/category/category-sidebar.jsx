@@ -3,7 +3,6 @@ import listIcon from "../images/list.svg";
 import addIcon from "../images/plus.svg";
 import deleteIcon from "../images/trash.svg";
 
-
 function CategorySidebar({
   category,
   setselectedCategory,
@@ -21,7 +20,6 @@ function CategorySidebar({
   const handleDeleteCategory = () => {
     const data = alert("are you sure ? this cant be undone ");
     console.log("data", data);
-
   };
   // console.log("channel", channelName);
 
@@ -47,9 +45,20 @@ function CategorySidebar({
         <div className="sidebar__category__list">
           {console.log("category inside sidebar", category)}
           {category.map((item, index) => (
-            <p onClick={() => handleSelectedCategory(item)} key={index}>
-              {item.name}<span><img onClick={handleDeleteCategory} src={deleteIcon}></img></span>
-            </p>
+            <>
+              <div
+                className="sidebar__category__card"
+                onClick={() => handleSelectedCategory(item)}
+                key={index}
+              >
+                <p>
+                  {item.name}
+                  <span>
+                    <img onClick={handleDeleteCategory}src={deleteIcon}></img>
+                  </span>
+                </p>
+              </div>
+            </>
           ))}
         </div>
       </div>
