@@ -17,8 +17,10 @@ function Header() {
       </div>
 
       <div className="header__right">
-        <div className="header__admin__image"></div>
-        <p>Super Admin</p>
+        <div className="header-right-user-details">
+          <div className="header__admin__image"></div>
+          <p>Super Admin</p>
+        </div>
         <img className="header__icon__logout" src={logout} alt=""></img>
       </div>
     </div>

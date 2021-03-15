@@ -1,5 +1,5 @@
 import { DragDropContext } from "react-beautiful-dnd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
@@ -8,6 +8,7 @@ import CategoryContainer from "./components/category/category-container";
 import ResumeContainer from "./components/resume/resumeContainer";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { initialData } from "./components/data";
+import axios from "axios";
 function App() {
   const [resume, setResume] = useState(initialData.record);
   const [category, setCategory] = useState([
@@ -25,6 +26,21 @@ function App() {
    * the IDs of the droppable container to the names of the
    * source arrays stored in the state.
    */
+  useEffect(() => {
+    // Optionally the request above could also be done as
+
+    axios
+      .get("https://api.jsonbin.io/v3/b/603e095481087a6a8b944bd4", {
+        headers: {
+          // "Content-Type": "application/json",
+          "X-Master-Key":
+            "$2b$10$UAbuAykF9DA3OF7jzfQEVeBXFyPyXM8ZcDcenVuxsPP3fy4IXDluy",
+        },
+      })
+      .then(function (response) {
+        console.log(response.data.record);
+      });
+  }, []);
 
   const id2List = {
     droppable1: resume,
@@ -138,7 +154,7 @@ function App() {
                   backgroundColor: snapshot.isDraggingOver
                     ? " #4fb185"
                     : "#4fb185",
-                  flex: "0.2 ",
+                  // flex: "0.2 ",
                 }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
@@ -154,9 +170,11 @@ function App() {
             setselectedCategory={setselectedCategory}
             handleSelectedCategory={handleSelectedCategory}
             handleAddCategory={handleCategoryAddition}
-            style={{
-              flex: "0.3 ",
-            }}
+            style={
+              {
+                // flex: "0.3 ",
+              }
+            }
           />
 
           <Droppable
@@ -168,7 +186,7 @@ function App() {
               <div
                 style={{
                   backgroundColor: snapshot.isDraggingOver ? "#ffffff" : "",
-                  flex: "0.5 ",
+                  // flex: "0.5 ",
                 }}
                 ref={provided.innerRef}
                 {...provided.droppableProps}

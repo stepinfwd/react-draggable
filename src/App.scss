@@ -20,9 +20,15 @@
   margin-bottom: 20px;
 }
 // responsive code
-// @media only screen and (min-width: 600px) {
-//   .layout__container {
-//     display: flex;
-//     flex-direction: column;
-//   }
-// }
+@media only screen and (max-width: 600px) {
+  .layout__container {
+    display: flex;
+    flex-direction: column;
+  }
+  .droppable__resume__container {
+  width: 80vw;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  }
+}

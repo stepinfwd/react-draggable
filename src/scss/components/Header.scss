@@ -68,3 +68,23 @@
     width: 30vw;
   }
 }
+@media only screen and (max-width: 600px) {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    &__right{
+      width: 3rem;
+    }
+  }
+  .header__right >.header-right-user-details {
+    display: none  !important;
+  }
+  .header__icon {
+    height: 100px;
+    margin-left: 5px;
+    width: 2.5rem;
+  }
+  .header__icon__logout {
+    // display: block !important;
+  }
+}
