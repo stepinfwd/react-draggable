@@ -17,7 +17,7 @@ function Header() {
       </div>
 
       <div className="header__right">
-        <div className="header-right-user-details">
+        <div className="header__right__userdetails">
           <div className="header__admin__image"></div>
           <p>Super Admin</p>
         </div>

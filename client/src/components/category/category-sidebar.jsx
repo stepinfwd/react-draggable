@@ -11,6 +11,8 @@ function CategorySidebar({
 }) {
   
   const  [channelName, setchannelName] = useState();
+  const  [selectedStyle, setselectedStyle] = useState(false);
+
 
   const handleNewCategory = () => {
     const data = prompt("add a new category");
@@ -25,10 +27,10 @@ function CategorySidebar({
 
   handleSelectedCategory = (item) => {
     setselectedCategory(item);
+    setselectedStyle(!selectedStyle)
   };
 
   const toggleSidebarList=()=>{
-
   }
   return (
     <div className="sidebar">
@@ -45,7 +47,7 @@ function CategorySidebar({
             ></img>
           </div>
         </div>
-        <div className="sidebar__category__list">
+        <div className="sidebar__category__list" >
           {category.map((item, index) => (
             <>
               <div
@@ -54,7 +56,7 @@ function CategorySidebar({
                 key={index}
                 
               >
-                <p>
+                <p className={selectedStyle?"selected__style":""}>
                   {item.name}
                   <span>
                     <img onClick={handleDeleteCategory}src={deleteIcon}></img>

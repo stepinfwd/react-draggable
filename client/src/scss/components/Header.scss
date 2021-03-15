@@ -39,12 +39,20 @@
     justify-content: space-between;
     width: 15vw;
     // margin-right: 80px;
+    &__userdetails {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between;
+
+    }
+
     p {
       padding-left: 10px;
       // padding-right: 5px;
     }
   }
 }
+
 
 .header__center > input {
   border: none;
@@ -65,19 +73,19 @@
 }
 @media only screen and (max-width: 1200px) {
   .header__right {
-    width: 30vw;
+    width: 30vw !important;
   }
 }
 @media only screen and (max-width: 600px) {
   .header {
     display: flex;
     justify-content: space-between;
-    &__right{
+    &__right {
       width: 3rem;
     }
   }
-  .header__right >.header-right-user-details {
-    display: none  !important;
+  .header__right > .header__right__userdetails {
+    display: none !important;
   }
   .header__icon {
     height: 100px;

@@ -1,5 +1,8 @@
 @import "../abstracts/variables.scss";
-
+.selected__style{
+  background-color: rgb(73, 93, 91);
+  color: #ffffff;
+}
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -64,6 +67,9 @@
   //   padding-left: 20px;
   display: flex;
   flex-direction: column-reverse;
+  &__selected{
+    background-color: aqua;
+  }
   p {
     padding: 1rem;
     // margin: 0.5rem;
