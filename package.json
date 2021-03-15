@@ -1,0 +1,38 @@
+{
+  "name": "collect-chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client-install": "npm install --prefix client",
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stepinfwd/collect-chat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stepinfwd/collect-chat/issues"
+  },
+  "homepage": "https://github.com/stepinfwd/collect-chat#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "concurrently": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
