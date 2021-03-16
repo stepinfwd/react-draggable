@@ -1,0 +1,1 @@
+export const paymentKey="$2b$10$UAbuAykF9DA3OF7jzfQEVeBXFyPyXM8ZcDcenVuxsPP3fy4IXDluy";
