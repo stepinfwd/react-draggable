@@ -21,8 +21,14 @@ function App() {
   const [newCategory, setNewCategory] = useState();
   const [selectedCategory, setselectedCategory] = useState(category[0]);
 
-
+  /**
+   * A semi-generic way to handle multiple lists. Matches
+   * the IDs of the droppable container to the names of the
+   * source arrays stored in the state.
+   */
   useEffect(() => {
+    // Optionally the request above could also be done as
+
     axios
       .get("https://api.jsonbin.io/v3/b/603e095481087a6a8b944bd4", {
         headers: {
