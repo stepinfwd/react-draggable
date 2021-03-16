@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 export const createCategory = async (req, res) => {
-    const { deps } = req.body;
+    const { id,name,items } = req.body;
 
     const newCategoryMessage = new CategoryMessage({deps})
 
