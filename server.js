@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({  extended: true }))
 app.use(cors());
 
 
-const CONNECTION_URL = 'mongodb+srv://mongodb+srv://user:<password>@cluster0.hbc0x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority:123123123@practice.jto9p.mongodb.net/test';
+const CONNECTION_URL = 'mongodb+srv://user:userpassword@cluster0.hbc0x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority+srv://mongodb+srv://user:userpassword@cluster0.hbc0x.mongodb.net/myFirstDatabase?retryWrites=true&w=majority:123123123@practice.jto9p.mongodb.net/test';
 const PORT = process.env.PORT|| 5000;
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
