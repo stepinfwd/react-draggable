@@ -9,6 +9,7 @@ import ResumeContainer from "./components/resume/resumeContainer";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { initialData } from "./components/data";
 import axios from "axios";
+import { useDrag } from 'react-dnd'
 function App() {
   const [resume, setResume] = useState(initialData.record);
   const [category, setCategory] = useState([
